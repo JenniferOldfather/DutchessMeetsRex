@@ -1,47 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="bottom"
-    android:orientation="vertical">
+    android:layout_gravity="bottom">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="154dp"
+        android:layout_height="wrap_content"
         android:fontFamily="cursive"
-        android:text="@string/dutchess_statement"
+        android:layout_alignParentTop="true"
         android:textAlignment="center"
+        android:text="@string/dutchess_statement"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#3F51B5"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:text="@string/dutchess_statement"
-        android:paddingTop="40dp"/>
+        tools:text="@string/dutchess_statement"></TextView>
 
     <ImageView
+        android:id="@+id/dutchess"
         android:layout_width="395dp"
         android:layout_height="259dp"
         android:layout_gravity="bottom"
-        app:srcCompat="@drawable/dutchess"
-        android:paddingTop="40dp"
-        android:paddingBottom="40dp"></ImageView>
-
+        android:layout_below="@id/textView"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/dutchess"></ImageView>
 
     <Button
         android:id="@+id/playButton"
         android:layout_width="match_parent"
-        android:layout_height="117dp"
-        android:backgroundTint="#3F51B5"
-        android:fontFamily="cursive"
+        android:layout_height="45dp"
         android:text="@string/play"
-        android:textColor="#F8F6F6"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_below="@id/dutchess"
+        android:textColor="#3F51B5" />
 
 
-
-
-</LinearLayout>
+</RelativeLayout>
