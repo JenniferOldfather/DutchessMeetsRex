@@ -2,4 +2,5 @@
     <string name="app_name">DutchessMeetsRex</string>
     <string name="dutchess_statement">Hello Rex!  This is Sissy\'s Favorite Picture of Me!</string>
     <string name="play">Play</string>
+    <string name= "card_background">Card Background</string>
 </resources>

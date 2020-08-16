@@ -1,5 +1,6 @@
 package com.example.dutchessmeetsrex
 
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,8 +20,9 @@ class MainActivity : AppCompatActivity() {
         playButton = findViewById(id.playButton)
         playButton.setOnClickListener{view: View ->
             //create a new activity for the button
-            setContentView(layout.play_area_background)
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+            val intent = Intent(this, PlayAreaBackground::class.java)
+            startActivity(intent)
+
         }
     }
 }
