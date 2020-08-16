@@ -25,9 +25,9 @@
         android:layout_width="395dp"
         android:layout_height="259dp"
         android:layout_gravity="bottom"
-        app:srcCompat="@drawable/dutchess"
         android:paddingTop="40dp"
-        android:paddingBottom="40dp"></ImageView>
+        android:paddingBottom="40dp"
+        app:srcCompat="@drawable/Rex"></ImageView>
 
 
     <Button
