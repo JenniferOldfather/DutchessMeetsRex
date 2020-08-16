@@ -27,7 +27,7 @@
         android:layout_gravity="bottom"
         android:paddingTop="40dp"
         android:paddingBottom="40dp"
-        app:srcCompat="@drawable/Rex"></ImageView>
+        app:srcCompat="@drawable/dutchess"></ImageView>
 
 
     <Button
