@@ -20,7 +20,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.marginLeft
 import androidx.core.view.marginTop
 
-
+/*This might need to be renamed.  This in my head would be the main class that holds the background
+and any universal game functionality. Like OnTouch, Make Moves, determine level, the reference to the games, and mapping for the layout.
+*/
 class PlayAreaBackground: AppCompatActivity(), OnTouchListener {
     private var dX : Float = 0.0f
     private var dY : Float = 0.0f
@@ -64,6 +66,39 @@ class PlayAreaBackground: AppCompatActivity(), OnTouchListener {
         }
         return true
     }
+
+    /*The creation of the Landscape map.
+    Holds coordinates (X, Y) in reference to the view.
+    Holds the designates the pile type, the number of cards expected.
+    If the pile is to hold a specific card in the beginning, the map holds the Card's Suite and Rank to pull that card to be used.
+    If the pile is locked at the beginning of the game, then it is noted here.
+    If the pile is staggered, the x and y offset to stagger the piles.
+
+    */
+
+    fun gameLandscapeMap() : HashMap<Int, HashMap<Int, Int>> {
+        return hashMapOf()
+    }
+
+    fun gameLayout(_number : Int, _xValue: Int, _yValue : Int, _pileType: Int, _numberOfCards: Int, _cardSuite : Int, _cardRank: Int, _isLocked: Boolean, _xOffset: Int, _yOffset: Int): HashMap<Int, Int> {
+        val map = gameLandscapeMap()
+        /*it should look like this...
+        The first 0 is a reference for the first pile on the screen.
+        The (1,0) are the x and y coordinates
+        5 = number of cards the pile starts with
+        0 - designated suite
+        0 - designated rank
+        0 - xOffset
+        5 - yOffset
+        map.put(0((1, 0), getTableauPile(), 5, 0,0,false, 0, 5)
+        map.add(0)
+
+        */
+
+        return hashMapOf()
+    }
+
+
 }
 
 
