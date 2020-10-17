@@ -8,8 +8,15 @@ package com.example.dutchessmeetsrex
 //If the pile is unlocked, typically the cards in the Tableau Pile are all face up.
 //Some games allow more than one card to be shown but they can still be locked, some games you can only pick the last couple of cards to build on
 // or pull from so we will need to be flexible in how the game handles locking and unlocking, which cards are face up, what can be built on etc.
-class TableauPile(_cards: MutableList<Card>, _size: Int, _isLocked: Boolean, _isStaggered : Boolean, _bottomCardFaceUp: Boolean, _buildUpOrDown: Int, _sameColor: Int) : Pile(_cards, _size,
-    _isLocked, _isStaggered, _bottomCardFaceUp) {
 
+open class TableauPile() : Pile() {
+
+    var buildUpOrDown: Int? = null
+    var sameColor: Int? = null
+
+    constructor(_buildUpOrDown: Int, _sameColor: Int) : this(){
+        this.buildUpOrDown = _buildUpOrDown
+        this.sameColor = _sameColor
+    }
 
 }

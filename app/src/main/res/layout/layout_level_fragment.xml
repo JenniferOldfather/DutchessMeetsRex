@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:background="#00BCD4"
+    android:id="@+id/level_fragment"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="top"
+        android:background="#FF0000"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".75"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="30dp"
+            android:id="@+id/lives_button"
+            android:text="@string/lives" />
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:id="@+id/money_button"
+            android:text="@string/money"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="30dp"
+            android:layout_weight=".75"
+            />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".75"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="30dp"
+            android:id="@+id/stars"
+            android:text="@string/stars"
+            />
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:id="@+id/settings_button"
+            android:text="@string/settings"
+            android:layout_weight=".75"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="277dp"
+        android:background="#FFFF00"
+        android:id="@+id/level_scroll_view"
+        android:text="@string/image_of_levels">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="@string/gameEntry"
+            android:id="@+id/game_entry"
+            android:layout_gravity="center_horizontal"
+            />
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00BCD4"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="30dp"
+            android:id="@+id/level_text"
+            android:text="@string/level" />
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="30dp"
+            android:id="@+id/subtask_fragment"
+            android:text="@string/subtaskFragment" />
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="30dp"
+            android:id="@+id/dashboard"
+            android:text="@string/dashboard" />
+
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

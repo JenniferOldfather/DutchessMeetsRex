@@ -6,87 +6,143 @@ import android.graphics.drawable.Drawable
 import android.security.identity.CipherSuiteNotSupportedException
 import java.util.*
 
-const val ACE = 1
-const val KING = 13
-const val QUEEN = 12
-const val JACK = 11
-const val DIAMOND = 0
-const val HEART = 2
-const val SPADE = 3
-const val CLUB = 4
-var FACE_UP = false
-var LOCKED = false
+enum class Suit{
+    DIAMOND, HEART, SPADE, CLUB
+}
 
-//has a rank
-//has a suit
-//is Face_up or Face_down
+enum class Rank {
+    ACE, KING, QUEEN, JACK, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN
+}
 
-open class Card(_rank: Int, _suit: Int){
-    constructor(_rank: Int, _suit: Int, _isFaceUp : Boolean, _isLocked : Boolean) : this(_rank, _suit)
 
-    var rank = _rank
-    var suit = _suit
+open class Card(){
 
-    var setImage = images(rank, suit)
+    //Declaring / Creating
+    var rank: Rank? = null
+    var suit: Suit? = null
+    var faceUp: Boolean = false
+    var locked: Boolean = false
 
-    private fun images(rank: Int, suit: Int): Any {
-        if (rank == ACE && suit == HEART){ return R.drawable.ace_of_hearts60x90
-        }else if(rank == KING && suit == HEART){return R.drawable.king_of_hearts60x90
-        }else if(rank == QUEEN && suit == HEART){return R.drawable.queen_of_hearts60x90
-        }else if(rank == JACK && suit == HEART){return R.drawable.jack_of_hearts60x90
-        }else if(rank == 10 && suit == HEART){return R.drawable.ten_of_hearts60x90
-        }else if(rank == 9 && suit == HEART){return R.drawable.nine_of_hearts60x90
-        }else if(rank == 8 && suit == HEART){return R.drawable.eight_of_hearts60x90
-        }else if(rank == 7 && suit == HEART){return R.drawable.seven_of_hearts60x90
-        }else if(rank == 6 && suit == HEART){return R.drawable.six_of_hearts60x90
-        }else if(rank == 5 && suit == HEART){return R.drawable.five_of_hearts60x90
-        }else if(rank == 4 && suit == HEART){return R.drawable.four_of_hearts60x90
-        }else if(rank == 3 && suit == HEART){return R.drawable.three_of_hearts60x90
-        }else if(rank == 2 && suit == HEART){return R.drawable.two_of_hearts60x90
-        }else if(rank == ACE && suit == DIAMOND){ return R.drawable.ace_of_diamonds60x90
-        }else if(rank == KING && suit == DIAMOND){ return R.drawable.king_of_diamonds60x90
-        }else if(rank == QUEEN && suit == DIAMOND){ return R.drawable.queen_of_diamonds60x90
-        }else if(rank == JACK && suit == DIAMOND){ return R.drawable.jack_of_diamonds60x90
-        }else if(rank == 10 && suit == DIAMOND){ return R.drawable.ten_of_diamonds60x90
-        }else if(rank == 9 && suit == DIAMOND){ return R.drawable.nine_of_diamonds60x90
-        }else if(rank == 8 && suit == DIAMOND){ return R.drawable.eight_of_diamonds60x90
-        }else if(rank == 7 && suit == DIAMOND){ return R.drawable.seven_of_diamonds60x90
-        }else if(rank == 6 && suit == DIAMOND){ return R.drawable.six_of_diamonds60x90
-        }else if(rank == 5 && suit == DIAMOND){ return R.drawable.five_of_diamonds60x90
-        }else if(rank == 4 && suit == DIAMOND){ return R.drawable.four_of_diamonds60x90
-        }else if(rank == 3 && suit == DIAMOND){ return R.drawable.three_of_diamonds60x90
-        }else if(rank == 2 && suit == DIAMOND){ return R.drawable.two_of_diamonds60x90
-        }else if(rank == ACE && suit == SPADE){ return R.drawable.ace_of_spades60x90
-        }else if(rank == KING && suit == SPADE){ return R.drawable.king_of_spades60x90
-        }else if(rank == QUEEN && suit == SPADE){ return R.drawable.queen_of_spades60x90
-        }else if(rank == JACK && suit == SPADE){ return R.drawable.jack_of_spades60x90
-        }else if(rank == 10 && suit == SPADE){ return R.drawable.ten_of_spades60x90
-        }else if(rank == 9 && suit == SPADE){ return R.drawable.nine_of_spades60x90
-        }else if(rank == 8 && suit == SPADE){ return R.drawable.eight_of_spades60x90
-        }else if(rank == 7 && suit == SPADE){ return R.drawable.seven_of_spades60x90
-        }else if(rank == 6 && suit == SPADE){ return R.drawable.six_of_spades60x90
-        }else if(rank == 5 && suit == SPADE){ return R.drawable.five_of_spades60x90
-        }else if(rank == 4 && suit == SPADE){ return R.drawable.four_of_spades60x90
-        }else if(rank == 3 && suit == SPADE){ return R.drawable.three_of_spades60x90
-        }else if(rank == 2 && suit == SPADE){ return R.drawable.two_of_spades60x90
-        }else if(rank == ACE && suit == CLUB){ return R.drawable.ace_of_clubs60x90
-        }else if(rank == KING && suit == CLUB){ return R.drawable.king_of_clubs60x90
-        }else if(rank == QUEEN && suit == CLUB){ return R.drawable.queen_of_clubs60x90
-        }else if(rank == JACK && suit == CLUB){ return R.drawable.jack_of_clubs60x90
-        }else if(rank == 10 && suit == CLUB){ return R.drawable.ten_of_clubs60x90
-        }else if(rank == 9 && suit == CLUB){ return R.drawable.nine_of_clubs60x90
-        }else if(rank == 8 && suit == CLUB){ return R.drawable.eight_of_clubs60x90
-        }else if(rank == 7 && suit == CLUB){ return R.drawable.seven_of_clubs60x90
-        }else if(rank == 6 && suit == CLUB){ return R.drawable.six_of_clubs60x90
-        }else if(rank == 5 && suit == CLUB){ return R.drawable.five_of_clubs60x90
-        }else if(rank == 4 && suit == CLUB){ return R.drawable.four_of_clubs60x90
-        }else if(rank == 3 && suit == CLUB){ return R.drawable.three_of_clubs60x90
-        }else if(rank == 2 && suit == CLUB){ return R.drawable.two_of_clubs60x90
-        } else  {
-            return R.drawable.joker60x90
-        }
-        return R.drawable.joker60x90
+
+    constructor(rank: Rank, suit: Suit, faceUp : Boolean, locked : Boolean) : this(){
+        this.suit = suit
+        this.rank = rank
+        this.faceUp = faceUp
+        this.locked = locked
     }
+
+    constructor(rank: Rank, suit: Suit) : this(){
+        this.suit = suit
+        this.rank = rank
+    }
+
+    fun setCardImage(): String { //replace String with Image
+        var result = "nothing"
+
+        if (rank == Rank.NINE && suit == Suit.HEART) {
+            result = "We found a match"
+        }
+        else {
+            result = "Nothing was found. try again"
+        }
+
+        return result
+    }
+
+
+        fun main() {
+            val card1 = Card(
+                Rank.NINE,
+                Suit.HEART,
+                true,
+                true
+            )
+            println(card1.suit)
+            println(card1.setCardImage())
+
+            val card2 = Card(
+                Rank.TWO,
+                Suit.SPADE
+
+            )
+            println(card2.suit)
+            println(card2.setCardImage())
+        }
+
+    //create functions names with actions so instead of just image, add what you want it to do..
+    open fun displayImages(rank: Rank, suit: Suit) {
+        //Case Statements would go faster than if(else if)  or break it down by suit and then by all the ranks
+
+        when(Suit.HEART){
+            Rank.ACE -> R.drawable.ace_of_hearts60x90
+            Rank.KING -> R.drawable.king_of_hearts60x90
+            Rank.QUEEN -> R.drawable.queen_of_hearts60x90
+            Rank.JACK -> R.drawable.jack_of_hearts60x90
+            Rank.TEN ->  R.drawable.ten_of_hearts60x90
+            Rank.NINE -> R.drawable.nine_of_hearts60x90
+            Rank.EIGHT -> R.drawable.eight_of_hearts60x90
+            Rank.SEVEN ->R.drawable.seven_of_hearts60x90
+            Rank.SIX -> R.drawable.six_of_hearts60x90
+            Rank.FIVE -> R.drawable.five_of_hearts60x90
+            Rank.FOUR -> R.drawable.four_of_hearts60x90
+            Rank.THREE -> R.drawable.three_of_hearts60x90
+            Rank.TWO ->R.drawable.two_of_hearts60x90
+        }
+        when(Suit.DIAMOND) {
+            Rank.ACE -> R.drawable.ace_of_diamonds60x90
+            Rank.KING -> R.drawable.king_of_diamonds60x90
+            Rank.QUEEN -> R.drawable.queen_of_diamonds60x90
+            Rank.JACK -> R.drawable.jack_of_diamonds60x90
+            Rank.TEN -> R.drawable.ten_of_diamonds60x90
+            Rank.NINE -> R.drawable.nine_of_diamonds60x90
+            Rank.EIGHT -> R.drawable.eight_of_diamonds60x90
+            Rank.SEVEN -> R.drawable.seven_of_diamonds60x90
+            Rank.SIX -> R.drawable.six_of_diamonds60x90
+            Rank.FIVE -> R.drawable.five_of_diamonds60x90
+            Rank.FOUR ->  R.drawable.four_of_diamonds60x90
+            Rank.THREE -> R.drawable.three_of_diamonds60x90
+            Rank.TWO -> R.drawable.two_of_diamonds60x90
+        }
+        when(Suit.SPADE) {
+            Rank.ACE -> R.drawable.ace_of_spades60x90
+            Rank.KING -> R.drawable.king_of_spades60x90
+            Rank.QUEEN -> R.drawable.queen_of_spades60x90
+            Rank.JACK -> R.drawable.jack_of_spades60x90
+            Rank.TEN -> R.drawable.ten_of_spades60x90
+            Rank.NINE -> R.drawable.nine_of_spades60x90
+            Rank.EIGHT -> R.drawable.eight_of_spades60x90
+            Rank.SEVEN -> R.drawable.seven_of_spades60x90
+            Rank.SIX -> R.drawable.six_of_spades60x90
+            Rank.FIVE -> R.drawable.five_of_spades60x90
+            Rank.FOUR -> R.drawable.four_of_spades60x90
+            Rank.THREE -> R.drawable.three_of_spades60x90
+            Rank.TWO -> R.drawable.two_of_spades60x90
+        }
+        when(Suit.CLUB){
+            Rank.ACE -> R.drawable.ace_of_clubs60x90
+            Rank.KING -> R.drawable.king_of_clubs60x90
+            Rank.QUEEN -> R.drawable.queen_of_clubs60x90
+            Rank.JACK -> R.drawable.jack_of_clubs60x90
+            Rank.TEN ->  R.drawable.ten_of_clubs60x90
+            Rank.NINE -> R.drawable.nine_of_clubs60x90
+            Rank.EIGHT -> R.drawable.eight_of_clubs60x90
+            Rank.SEVEN ->R.drawable.seven_of_clubs60x90
+            Rank.SIX -> R.drawable.six_of_clubs60x90
+            Rank.FIVE -> R.drawable.five_of_clubs60x90
+            Rank.FOUR -> R.drawable.four_of_clubs60x90
+            Rank.THREE -> R.drawable.three_of_clubs60x90
+            Rank.TWO ->R.drawable.two_of_clubs60x90
+        }
+        if(suit != Suit.CLUB || suit != Suit.SPADE || suit != Suit.DIAMOND || suit != Suit.HEART){
+            R.drawable.joker60x90
+        }
+
+
+
+
+    }
+
+    //create a face down method if face down return R.drawable.card_background
 
 
 }

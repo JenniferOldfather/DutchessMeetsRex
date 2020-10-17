@@ -2,6 +2,7 @@ package com.example.dutchessmeetsrex
 
 import android.content.ClipData
 import android.content.ClipDescription
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.graphics.Color.*
@@ -15,26 +16,92 @@ import android.view.View.OnTouchListener
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.marginLeft
 import androidx.core.view.marginTop
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import java.util.*
+import java.util.EnumSet.of
+import java.util.List.of
+import kotlin.collections.HashMap
 
 /*This might need to be renamed.  This in my head would be the main class that holds the background
 and any universal game functionality. Like OnTouch, Make Moves, determine level, the reference to the games, and mapping for the layout.
 */
-class PlayAreaBackground: AppCompatActivity(), OnTouchListener {
+class PlayAreaBackgroundFragment: Fragment() {
     private var dX : Float = 0.0f
     private var dY : Float = 0.0f
 
+  interface Callbacks {
+      fun onGameSelected(gameID : UUID)
+  }
+
+    private var callbacks: Callbacks? = null
+
+    private lateinit var gameRecyclerView: RecyclerView
+    private var adapter: gameAdapter = GameAdapter(emptyList())
+    private val gameListViewModel: GameListViewModel by lazy {
+        ViewModelProvider.of(this).get(GameListViewModel::class.java)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callbacks = context as Callbacks?
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.play_area_background)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        //initial view that is created
+        //background green and spades...
+        //Call layout
+        //getLandscapeMap()
 
-        val card = findViewById<ImageView>(R.id.play_card)
-        card.setOnTouchListener(this)
+        //---setup the hashmap in the layout..
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //find out more information on this method...
+        //secondary view that is called after onCreate.
+
+        //Call layout
+        //getLandscapeMap()
+
+        //---setup the hashmap in the layout..
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        callbacks = null
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+       R.id.undo -> {
+            //TODO need to implement undo
+          TODO()
+        }
+
+       R.id.redo -> {
+            //TODO need to implement undo
+           TODO()
+        }
+       R.id.newGame -> {
+            //TODO need to implement undo
+            TODO()
+        }
+
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
+    }
+
 
     override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
         when(motionEvent.action) {

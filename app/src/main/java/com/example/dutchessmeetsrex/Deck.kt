@@ -10,12 +10,18 @@ import java.util.*
 //The Deck is never face up.  Only the Deck's upcards are face up.
 //The Game determines how many times a player can go back through a deck.  Most games are unlimited, 1, or 3.  Based on the game's difficulty will determine how many passes through the deck a player has.
 
-class Deck(_cards: MutableList<Card>, _size : Int, _isShuffled : Random, _isStaggered: Boolean, _passesThroughDeck: Int) {
+open class Deck() {
 
-    var cards = _cards
-    var size = _size
-    //Not sure if we should have the shuffled here or not...
-    var isShuffled = _isShuffled
-    var isStaggered = _isStaggered
-    var passesThroughDeck = _passesThroughDeck
+    var cards:MutableList<Card>? = null
+    var size: Int? = null
+    var isStaggered: Boolean? = null
+    var passesThroughDeck: Int? = null
+
+    constructor(_cards: MutableList<Card>, _size : Int, _isStaggered: Boolean, _passesThroughDeck: Int): this(){
+        this.cards = _cards
+        this.size = _size
+        this.isStaggered = _isStaggered
+        this.passesThroughDeck = _passesThroughDeck
+    }
+
 }

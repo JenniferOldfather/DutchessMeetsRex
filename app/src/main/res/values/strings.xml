@@ -3,4 +3,16 @@
     <string name="dutchess_statement">Hello Rex!  This is Sissy\'s Favorite Picture of Me!</string>
     <string name="play">Play</string>
     <string name= "card_background">Card Background</string>
+    <string name= "action_undo">Undo</string>
+    <string name= "action_new_game">New Game</string>
+    <string name= "action_redo">Redo</string>
+    <string name= "level">Level</string>
+    <string name="settings">settings</string>
+    <string name="gameEntry">gameEntry</string>
+    <string name="lives">lives</string>
+    <string name="stars">stars</string>
+    <string name="subtaskFragment">SubtaskFragment</string>
+    <string name="dashboard">dashboard</string>
+    <string name="image_of_levels">imageOfLevels</string>
+    <string name="money">money</string>
 </resources>
